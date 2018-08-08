@@ -4,4 +4,5 @@ Coded By : a-asaker .
 
 # Requirements 
   [1] Nmap Installed
+  
   [2] Linux Or Windows With Bash Shell
