@@ -1,5 +1,6 @@
 # Network Connected Devices Scanner
-Scan Your Network With nmap And Print the IPs And MAC Addresses For Connected Devices . Project Coded In Bash
+Scan Your Network With nmap And Print the IPs And MAC Addresses For Connected Devices . Project Coded In Bash .
+
 Coded By : a-asaker .
 
 # Requirements 
