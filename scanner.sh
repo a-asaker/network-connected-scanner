@@ -1,5 +1,16 @@
 #!/bin/bash
 # Coded By : A_Asaker
+ID=`id -u`
+if [ "$ID" -ne 0 ]; then
+  if ! hash sudo 2>/dev/null; then
+    echo "This script must be executed as the 'root' user or with sudo"
+    exit 1
+  else
+    echo "Switching to root user"
+    sudo -E $0 $@
+    exit 0
+  fi
+fi
 mymac=$(ip link show wlan0 | awk '/ether/ {print $2}')
 nmapres=$(sudo nmap -sP 192.168.1.0/24 )
 ips=$(echo $nmapres | sed 's/ Nmap scan/\nNmap scan/g' | sed 's/ MAC Address/\nMAC Address/g' | sed 's/ Host is/\nHost is/g' | grep "Nmap scan" | cut -d " " -f 5)
@@ -30,7 +41,7 @@ for i in `seq 1 $num`; do
 # 		mac)
 # 			mac=$mac" (You MAC Device Name)"
 # 			;;
-# example:ff:ff:ff:ff:ff:ff)
+# example:	ff:ff:ff:ff:ff:ff)
 # 			mac=$mac" (Device-1)"
 # 			;;		
 # 		fe:fe:fe:fe:fe:fe)
